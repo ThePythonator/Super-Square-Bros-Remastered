@@ -16,6 +16,7 @@ namespace Framework {
 		// Called when stage stops being the current stage
 		virtual void end();
 
+		// Returns true if the application should close
 		virtual bool update(float dt) = 0;
 		virtual void render() = 0;
 
