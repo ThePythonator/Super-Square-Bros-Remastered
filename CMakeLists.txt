@@ -18,7 +18,8 @@ set(GAME_SOURCES
 	"Application.cpp"
 	"Game.cpp"
 
-	"Stages.cpp"
+	"MenuStages.cpp"
+	"GameStages.cpp"
 )
 
 # To be used instead of set(GAME_SOURCES ...)

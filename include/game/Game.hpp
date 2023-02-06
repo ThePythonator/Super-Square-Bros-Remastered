@@ -2,7 +2,7 @@
 
 #include "BaseGame.hpp"
 
-#include "Stages.hpp"
+#include "MenuStages.hpp"
 
 #include "FadeTransition.hpp"
 
