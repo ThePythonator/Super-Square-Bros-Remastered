@@ -27,70 +27,70 @@ namespace Framework {
 		_columns = _w / _sprite_size;
 	}
 
-	void Spritesheet::sprite(uint16_t index, vec2 position, SpriteTransform transform) {
+	void Spritesheet::sprite(uint16_t index, vec2 position, SpriteTransform transform) const {
 		sprite(index, position.x, position.y, transform);
 	}
-	void Spritesheet::sprite(uint16_t index, float x, float y, SpriteTransform transform) {
+	void Spritesheet::sprite(uint16_t index, float x, float y, SpriteTransform transform) const {
 		sprite(index, x, y, static_cast<float>(_default_scale), transform);
 	}
 
-	void Spritesheet::sprite(uint16_t index, vec2 position, float scale, SpriteTransform transform) {
+	void Spritesheet::sprite(uint16_t index, vec2 position, float scale, SpriteTransform transform) const {
 		sprite(index, position.x, position.y, scale, transform);
 	}
-	void Spritesheet::sprite(uint16_t index, float x, float y, float scale, SpriteTransform transform) {
+	void Spritesheet::sprite(uint16_t index, float x, float y, float scale, SpriteTransform transform) const {
 		Rect src = Rect(_sprite_size * (index % _columns), _sprite_size * (index / _columns), _sprite_size, _sprite_size);
 		rect(src, x, y, scale, transform);
 	}
 
-	void Spritesheet::sprite(uint16_t index, vec2 position, float scale, float angle, SpriteTransform transform) {
+	void Spritesheet::sprite(uint16_t index, vec2 position, float scale, float angle, SpriteTransform transform) const {
 		sprite(index, position.x, position.y, scale, angle, transform);
 	}
-	void Spritesheet::sprite(uint16_t index, float x, float y, float scale, float angle, SpriteTransform transform) {
+	void Spritesheet::sprite(uint16_t index, float x, float y, float scale, float angle, SpriteTransform transform) const {
 		Rect src = Rect(_sprite_size * (index % _columns), _sprite_size * (index / _columns), _sprite_size, _sprite_size);
 		rect(src, x, y, scale, angle, scale * src.size / 2, transform); // tod fi? - note: no idea what this means?? maybe todo fix?
 	}
 
-	void Spritesheet::sprite(uint16_t index, vec2 position, float scale, float angle, vec2 centre, SpriteTransform transform) {
+	void Spritesheet::sprite(uint16_t index, vec2 position, float scale, float angle, vec2 centre, SpriteTransform transform) const {
 		sprite(index, position.x, position.y, scale, angle, centre, transform);
 	}
-	void Spritesheet::sprite(uint16_t index, float x, float y, float scale, float angle, vec2 centre, SpriteTransform transform) {
+	void Spritesheet::sprite(uint16_t index, float x, float y, float scale, float angle, vec2 centre, SpriteTransform transform) const {
 		Rect src = Rect(_sprite_size * (index % _columns), _sprite_size * (index / _columns), _sprite_size, _sprite_size);
 		rect(src, x, y, scale, angle, centre, transform);
 	}
 
 
-	void Spritesheet::rect(Rect src, vec2 position, SpriteTransform transform) {
+	void Spritesheet::rect(Rect src, vec2 position, SpriteTransform transform) const {
 		rect(src, position.x, position.y, transform);
 	}
-	void Spritesheet::rect(Rect src, float x, float y, SpriteTransform transform) {
+	void Spritesheet::rect(Rect src, float x, float y, SpriteTransform transform) const {
 		rect(src, x, y, static_cast<float>(_default_scale), transform);
 	}
 
-	void Spritesheet::rect(Rect src, vec2 position, float scale, SpriteTransform transform) {
+	void Spritesheet::rect(Rect src, vec2 position, float scale, SpriteTransform transform) const {
 		rect(src, position.x, position.y, scale, transform);
 	}
-	void Spritesheet::rect(Rect src, float x, float y, float scale, SpriteTransform transform) {
+	void Spritesheet::rect(Rect src, float x, float y, float scale, SpriteTransform transform) const {
 		Rect dst = Rect(_scale_positions ? x * scale : x, _scale_positions ? y * scale : y, src.size.x * scale, src.size.y * scale);
 		_spritesheet_image->render(src, dst, transform_to_angle(transform), dst.size / 2, transform_to_imageflip(transform)); // to fix?
 	}
 
-	void Spritesheet::rect(Rect src, vec2 position, float scale, float angle, vec2 centre, SpriteTransform transform) {
+	void Spritesheet::rect(Rect src, vec2 position, float scale, float angle, vec2 centre, SpriteTransform transform) const {
 		rect(src, position.x, position.y, scale, angle, centre, transform);
 	}
-	void Spritesheet::rect(Rect src, float x, float y, float scale, float angle, vec2 centre, SpriteTransform transform) {
+	void Spritesheet::rect(Rect src, float x, float y, float scale, float angle, vec2 centre, SpriteTransform transform) const {
 		Rect dst = Rect(_scale_positions ? x * scale : x, _scale_positions ? y * scale : y, src.size.x * scale, src.size.y * scale);
 		_spritesheet_image->render(src, dst, angle + transform_to_angle(transform), centre, transform_to_imageflip(transform));
 	}
 
-	uint8_t Spritesheet::get_sprite_size() {
+	uint8_t Spritesheet::get_sprite_size() const {
 		return _sprite_size;
 	}
 
-	uint8_t Spritesheet::get_scale() {
+	uint8_t Spritesheet::get_scale() const {
 		return _default_scale;
 	}
 
-	Image* Spritesheet::get_image() {
+	Image* Spritesheet::get_image() const {
 		return _spritesheet_image;
 	}
 

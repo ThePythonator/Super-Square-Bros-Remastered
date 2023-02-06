@@ -11,26 +11,26 @@ namespace Framework {
 		Spritesheet();
 		Spritesheet(Image* spritesheet_image, uint8_t sprite_size = 16, uint8_t default_scale = 1, bool scale_positions = true);
 
-		void sprite(uint16_t index, vec2 position, SpriteTransform transform = SpriteTransform::NONE);
-		void sprite(uint16_t index, float x, float y, SpriteTransform transform = SpriteTransform::NONE);
-		void sprite(uint16_t index, vec2 position, float scale, SpriteTransform transform = SpriteTransform::NONE);
-		void sprite(uint16_t index, float x, float y, float scale, SpriteTransform transform = SpriteTransform::NONE);
-		void sprite(uint16_t index, vec2 position, float scale, float angle, SpriteTransform transform = SpriteTransform::NONE);
-		void sprite(uint16_t index, float x, float y, float scale, float angle, SpriteTransform transform = SpriteTransform::NONE);
-		void sprite(uint16_t index, vec2 position, float scale, float angle, vec2 centre, SpriteTransform transform = SpriteTransform::NONE);
-		void sprite(uint16_t index, float x, float y, float scale, float angle, vec2 centre, SpriteTransform transform = SpriteTransform::NONE);
+		void sprite(uint16_t index, vec2 position, SpriteTransform transform = SpriteTransform::NONE) const;
+		void sprite(uint16_t index, float x, float y, SpriteTransform transform = SpriteTransform::NONE) const;
+		void sprite(uint16_t index, vec2 position, float scale, SpriteTransform transform = SpriteTransform::NONE) const;
+		void sprite(uint16_t index, float x, float y, float scale, SpriteTransform transform = SpriteTransform::NONE) const;
+		void sprite(uint16_t index, vec2 position, float scale, float angle, SpriteTransform transform = SpriteTransform::NONE) const;
+		void sprite(uint16_t index, float x, float y, float scale, float angle, SpriteTransform transform = SpriteTransform::NONE) const;
+		void sprite(uint16_t index, vec2 position, float scale, float angle, vec2 centre, SpriteTransform transform = SpriteTransform::NONE) const;
+		void sprite(uint16_t index, float x, float y, float scale, float angle, vec2 centre, SpriteTransform transform = SpriteTransform::NONE) const;
 
-		void rect(Rect src, vec2 position, SpriteTransform transform = SpriteTransform::NONE);
-		void rect(Rect src, float x, float y, SpriteTransform transform = SpriteTransform::NONE);
-		void rect(Rect src, vec2 position, float scale, SpriteTransform transform = SpriteTransform::NONE);
-		void rect(Rect src, float x, float y, float scale, SpriteTransform transform = SpriteTransform::NONE);
-		void rect(Rect src, vec2 position, float scale, float angle, vec2 centre, SpriteTransform transform = SpriteTransform::NONE);
-		void rect(Rect src, float x, float y, float scale, float angle, vec2 centre, SpriteTransform transform = SpriteTransform::NONE);
+		void rect(Rect src, vec2 position, SpriteTransform transform = SpriteTransform::NONE) const;
+		void rect(Rect src, float x, float y, SpriteTransform transform = SpriteTransform::NONE) const;
+		void rect(Rect src, vec2 position, float scale, SpriteTransform transform = SpriteTransform::NONE) const;
+		void rect(Rect src, float x, float y, float scale, SpriteTransform transform = SpriteTransform::NONE) const;
+		void rect(Rect src, vec2 position, float scale, float angle, vec2 centre, SpriteTransform transform = SpriteTransform::NONE) const;
+		void rect(Rect src, float x, float y, float scale, float angle, vec2 centre, SpriteTransform transform = SpriteTransform::NONE) const;
 
-		uint8_t get_sprite_size();
-		uint8_t get_scale();
+		uint8_t get_sprite_size() const;
+		uint8_t get_scale() const;
 
-		Image* get_image();
+		Image* get_image() const;
 
 	private:
 		Image* _spritesheet_image = nullptr;
