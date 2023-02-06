@@ -12,7 +12,7 @@ namespace WINDOW {
 	const Framework::vec2 SIZE = Framework::vec2{ 1024, 768 };
 	const Framework::vec2 SIZE_HALF = SIZE / 2;
 
-	const std::string TITLE = "Your Game";
+	const std::string TITLE = "Super Square Bros: Remastered";
 
 	const float TARGET_FPS = 60.0f;
 	const float TARGET_DT = 1.0f / TARGET_FPS;
@@ -30,7 +30,7 @@ namespace PATHS {
 	namespace IMAGES {
 		const std::string LOCATION = "assets/images/";
 
-		const std::string MAIN_SPRITESHEET = "demo_spritesheet.png";
+		const std::string MAIN_SPRITESHEET = "spritesheet.png";
 		const std::string FONT_SPRITESHEET = "font.png";
 	}
 
@@ -94,9 +94,9 @@ namespace COLOURS {
 	const Framework::Colour WHITE{ 0xFF, 0xFF, 0xFF };
 }
 
-namespace TIMINGS {
-
-}
+//namespace TIMINGS {
+//
+//}
 
 namespace TRANSITIONS {
 	const float FADE_TIME = 1.0f;
@@ -113,11 +113,11 @@ namespace SPRITES {
 	}
 }
 
-namespace CURVES {
-	namespace BEZIER {
-		
-	}
-}
+//namespace CURVES {
+//	namespace BEZIER {
+//		
+//	}
+//}
 
 namespace BUTTONS {
 	// NONE = 255, but this is defined as BUTTON_NONE_SELECTED in Button.hpp
@@ -142,6 +142,6 @@ namespace BUTTONS {
 	}
 }
 
-namespace GAME {
-	
-}
+//namespace GAME {
+//	
+//}
