@@ -38,4 +38,70 @@ namespace Framework {
 			printf("Written to %s\n", filepath.c_str());
 		}
 	}
+
+	namespace TMXHandler {
+		TMX read(std::string filepath, TMXFormat file_format) {
+			// Auto-detect file format if needed
+			if (file_format == TMXFormat::AUTO) file_format = get_format(filepath);
+
+			TMX tmx_data;
+
+			switch (file_format) {
+			case TMXFormat::JSON:
+				JSONHandler::read(filepath).get_to(tmx_data);
+				break;
+			case TMXFormat::XML:
+				printf("Tiled level file format unsupported (XML)!");
+				break;
+			case TMXFormat::CSV:
+				printf("Tiled level file format unsupported (CSV)!");
+				break;
+			case TMXFormat::UNKNOWN:
+			default:
+				printf("Tiled level file format unknown!");
+				break;
+			}
+
+			return tmx_data;
+		}
+
+		// Determines the Tiled level file format from the file name
+		TMXFormat get_format(std::string filepath) {
+			std::string extension = std::filesystem::path(filepath).extension().string();
+			
+			if		(extension == ".json" || extension == ".tmj")   return TMXFormat::JSON;
+			else if (extension == ".xml" || extension == ".tmx")    return TMXFormat::XML;
+			else if (extension == ".csv")                           return TMXFormat::CSV;
+			else                                                    return TMXFormat::UNKNOWN;
+		}
+
+
+		// Conversion methods
+		
+		void from_json(const JSONHandler::json& json_data, TMX& data) {
+			try {
+				json_data.at("width").get_to(data.width);
+				json_data.at("height").get_to(data.height);
+				json_data.at("layers").get_to(data.layers);
+			}
+			catch (const JSONHandler::out_of_range& error) {
+				printf("Couldn't parse JSON to TMX! Error: %s\n", error.what());
+			}
+		}
+
+		void from_json(const JSONHandler::json& json_data, std::map<std::string, TMXLayer>& data) {
+			try {
+				for (const JSONHandler::json& layer : json_data) {
+					// This does not work if maps have multiple layers with the same name
+					data.insert_or_assign(
+						layer.at("name").get<std::string>(),
+						layer.at("data").get<TMXLayer>() // This works without another from_json method since the underlying type is a vector
+					);
+				}
+			}
+			catch (const JSONHandler::out_of_range& error) {
+				printf("Couldn't parse JSON to std::map<std::string, TMXLayer>! Error: %s\n", error.what());
+			}
+		}
+	}
 }
