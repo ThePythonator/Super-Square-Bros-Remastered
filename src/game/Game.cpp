@@ -14,10 +14,10 @@ void Game::end() {
 
 void Game::load_data() {
 	// TODO: Should this be set to PATHS::BASE_PATH? If so, that requires importing Constants.hpp
-	std::string BASE_PATH = Framework::SDLUtils::find_base_directory(PATHS::IMAGES::LOCATION + PATHS::IMAGES::MAIN_SPRITESHEET, PATHS::DEPTH);
+	PATHS::BASE_PATH = Framework::SDLUtils::find_base_directory(PATHS::IMAGES::LOCATION + PATHS::IMAGES::MAIN_SPRITESHEET, PATHS::DEPTH);
 	
 	// Base path is two above images path
-	std::string IMAGES_PATH = BASE_PATH + PATHS::IMAGES::LOCATION;
+	std::string IMAGES_PATH = PATHS::BASE_PATH + PATHS::IMAGES::LOCATION;
 
 	// Load spritesheet image
 	graphics_objects.image_ptrs[GRAPHICS_OBJECTS::IMAGES::MAIN_SPRITESHEET] = Framework::create_image(graphics_objects.graphics_ptr, IMAGES_PATH + PATHS::IMAGES::MAIN_SPRITESHEET, Framework::Image::Flags::SDL_TEXTURE);

@@ -27,6 +27,9 @@ namespace STRINGS {
 namespace PATHS {
 	const uint8_t DEPTH = 4;
 
+	// Set at runtime
+	std::string BASE_PATH;
+
 	namespace IMAGES {
 		const std::string LOCATION = "assets/images/";
 
@@ -36,6 +39,12 @@ namespace PATHS {
 
 	namespace SAVE_DATA {
 		
+	}
+
+	namespace LEVELS {
+		const std::string LOCATION = "assets/levels/";
+
+		const std::string LEVEL_SELECT = "level_select.tmj";
 	}
 }
 
@@ -109,7 +118,7 @@ namespace SPRITES {
 	const uint8_t UI_SCALE = 4;
 
 	namespace INDEX {
-
+		const uint16_t BLANK = 0x3ff;
 	}
 }
 

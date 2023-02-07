@@ -9,6 +9,8 @@
 
 class LevelSelectStage : public Framework::BaseStage {
 public:
+	LevelSelectStage();
+
 	bool update(float dt);
 	void render();
 
