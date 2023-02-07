@@ -16,13 +16,13 @@ void Level::update(float dt) {
 }
 
 void Level::render() {
-
+	render_layer(STRINGS::LEVELS::FOREGROUND);
 }
 
-void Level::render_layer(const Framework::TMXHandler::TMXLayer& layer) {
+void Level::render_layer(std::string layer_name) {
 	uint16_t x = 0;
 	uint16_t y = 0;
-	for (uint16_t index : layer) {
+	for (uint16_t index : tmx_data.layers[layer_name]) {
 		spritesheet.sprite(index, Framework::Vec(x,y));
 		x++;
 		if (x == tmx_data.width) {

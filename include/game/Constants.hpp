@@ -21,7 +21,9 @@ namespace WINDOW {
 }
 
 namespace STRINGS {
-
+	namespace LEVELS {
+		const std::string FOREGROUND = "Foreground"; // TODO: this may change later
+	}
 }
 
 namespace PATHS {

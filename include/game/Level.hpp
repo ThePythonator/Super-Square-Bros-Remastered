@@ -13,7 +13,7 @@ public:
 	void render();
 
 private:
-	void render_layer(const Framework::TMXHandler::TMXLayer& layer);
+	void render_layer(std::string layer_name);
 
 	const Framework::Spritesheet& spritesheet;
 
