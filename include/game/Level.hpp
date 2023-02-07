@@ -7,7 +7,8 @@
 
 class Level {
 public:
-	Level(const Framework::Spritesheet& spritesheet, std::string filepath); // Or maybe int for level number? Auto gen filepath from that?
+	Level();
+	Level(Framework::Spritesheet* _spritesheet_ptr, std::string filepath); // Or maybe int for level number? Auto gen filepath from that?
 
 	void update(float dt);
 	void render();
@@ -15,7 +16,7 @@ public:
 private:
 	void render_layer(std::string layer_name);
 
-	const Framework::Spritesheet& spritesheet;
+	Framework::Spritesheet* spritesheet_ptr;
 
 	Framework::TMXHandler::TMX tmx_data;
 };

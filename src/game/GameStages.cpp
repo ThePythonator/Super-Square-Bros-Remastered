@@ -1,12 +1,12 @@
 #include "GameStages.hpp"
 
-LevelSelectStage::LevelSelectStage() : level(Level(PATHS::LEVELS::LEVEL_SELECT)) {
-	// TODO: Maybe need a Spritesheet/graphics ptr/ref to send to level?
+void LevelSelectStage::start() {
+	level = Level(graphics_objects->spritesheet_ptrs[GRAPHICS_OBJECTS::SPRITESHEETS::MAIN_SPRITESHEET], PATHS::LEVELS::LEVEL_SELECT);
 }
 
 bool LevelSelectStage::update(float dt) {
 	//level.update(dt);
-	return false;
+	return true;
 }
 
 void LevelSelectStage::render() {

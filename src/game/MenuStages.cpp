@@ -21,6 +21,8 @@ bool TitleStage::update(float dt) {
 		}
 	}
 
+	finish(new LevelSelectStage());
+
 	if (transition->is_closed()) {
 		// Next stage!
 		switch (button_selected) {

@@ -1,6 +1,11 @@
 #include "File.hpp"
 
+namespace PATHS {
+	// Set at runtime
+	std::string BASE_PATH = "";
+}
 namespace Framework {
+
 	std::string get_directory_path(std::string filepath) {
 		return filepath.substr(0, filepath.find_last_of("\\/"));
 	}
@@ -48,7 +53,12 @@ namespace Framework {
 
 			switch (file_format) {
 			case TMXFormat::JSON:
-				JSONHandler::read(filepath).get_to(tmx_data);
+			{
+				JSONHandler::json json_data = JSONHandler::read(filepath);
+				if (!json_data.empty()) {
+					json_data.get_to(tmx_data);
+				}
+			}
 				break;
 			case TMXFormat::XML:
 				printf("Tiled level file format unsupported (XML)!");
@@ -85,6 +95,17 @@ namespace Framework {
 			}
 		}
 
+		// Converts the JSON layer array into a map which allows layer lookup by name
+		std::map<std::string, TMXLayer> parse_layers(const JSONHandler::json& layers) {
+			std::map<std::string, TMXLayer> parsed_layers;
+
+			for (const JSONHandler::json& layer : layers) {
+				parsed_layers[layer.at("name").get<std::string>()] = layer.at("data").get<TMXLayer>();
+			}
+
+			return parsed_layers;
+		}
+
 
 		// Conversion methods
 		
@@ -92,25 +113,10 @@ namespace Framework {
 			try {
 				json_data.at("width").get_to(data.width);
 				json_data.at("height").get_to(data.height);
-				json_data.at("layers").get_to(data.layers);
+				data.layers = parse_layers(json_data.at("layers"));
 			}
 			catch (const JSONHandler::out_of_range& error) {
 				printf("Couldn't parse JSON to TMX! Error: %s\n", error.what());
-			}
-		}
-
-		void from_json(const JSONHandler::json& json_data, std::map<std::string, TMXLayer>& data) {
-			try {
-				for (const JSONHandler::json& layer : json_data) {
-					// This does not work if maps have multiple layers with the same name
-					data.insert_or_assign(
-						layer.at("name").get<std::string>(),
-						layer.at("data").get<TMXLayer>() // This works without another from_json method since the underlying type is a vector
-					);
-				}
-			}
-			catch (const JSONHandler::out_of_range& error) {
-				printf("Couldn't parse JSON to std::map<std::string, TMXLayer>! Error: %s\n", error.what());
 			}
 		}
 	}

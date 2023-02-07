@@ -29,9 +29,6 @@ namespace STRINGS {
 namespace PATHS {
 	const uint8_t DEPTH = 4;
 
-	// Set at runtime
-	std::string BASE_PATH;
-
 	namespace IMAGES {
 		const std::string LOCATION = "assets/images/";
 
@@ -114,7 +111,7 @@ namespace TRANSITIONS {
 }
 
 namespace SPRITES {
-	const uint8_t SIZE = 16;
+	const uint8_t SIZE = 8;
 	const uint8_t SIZE_HALF = SIZE / 2;
 	const uint8_t SCALE = 4;
 	const uint8_t UI_SCALE = 4;
