@@ -1,6 +1,6 @@
 #include "Level.hpp"
 
-Level::Level(std::string filepath) {
+Level::Level(const Framework::Spritesheet& _spritesheet, std::string filepath) : spritesheet(_spritesheet) {
 	tmx_data = Framework::TMXHandler::read(PATHS::BASE_PATH + PATHS::LEVELS::LOCATION + filepath);
 	Framework::TMXHandler::reindex_empty_tiles(tmx_data, SPRITES::INDEX::BLANK);
 
@@ -17,4 +17,17 @@ void Level::update(float dt) {
 
 void Level::render() {
 
+}
+
+void Level::render_layer(const Framework::TMXHandler::TMXLayer& layer) {
+	uint16_t x = 0;
+	uint16_t y = 0;
+	for (uint16_t index : layer) {
+		spritesheet.sprite(index, Framework::Vec(x,y));
+		x++;
+		if (x == tmx_data.width) {
+			x = 0;
+			y++;
+		}
+	}
 }
