@@ -59,6 +59,9 @@ namespace Framework {
 		// Determines the Tiled level file format from the file name
 		TMXFormat get_format(std::string filepath);
 
+		// Changes the null tile index from 0 to the value specified, reducing all other indices by 1
+		void reindex_empty_tiles(TMX& data, uint16_t new_empty_index);
+
 		// Conversion methods
 		//void to_json(JSONHandler::json& json_data, const TMX& data);
 		void from_json(const JSONHandler::json& json_data, TMX& data);

@@ -75,6 +75,16 @@ namespace Framework {
 			else                                                    return TMXFormat::UNKNOWN;
 		}
 
+		// Changes the null tile index from 0 to the value specified, reducing all other indices by 1
+		void reindex_empty_tiles(TMX& data, uint16_t new_empty_index) {
+			for (auto& [name, layer] : data.layers) {
+				for (uint16_t i = 0; i < layer.size(); i++) {
+					// Update the index
+					layer[i] = layer[i] ? layer[i] - 1 : new_empty_index;
+				}
+			}
+		}
+
 
 		// Conversion methods
 		
