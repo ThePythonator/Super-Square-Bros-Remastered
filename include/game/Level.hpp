@@ -1,14 +1,14 @@
 #pragma once
 
 #include "File.hpp"
-#include "Spritesheet.hpp"
+#include "GraphicsObjects.hpp"
 
 #include "Constants.hpp"
 
 class Level {
 public:
 	Level();
-	Level(Framework::Spritesheet* _spritesheet_ptr, std::string filepath); // Or maybe int for level number? Auto gen filepath from that?
+	Level(Framework::GraphicsObjects* _graphics_objects_ptr, std::string filepath); // Or maybe int for level number? Auto gen filepath from that?
 
 	void update(float dt);
 	void render();
@@ -16,7 +16,7 @@ public:
 private:
 	void render_layer(std::string layer_name);
 
-	Framework::Spritesheet* spritesheet_ptr;
+	Framework::GraphicsObjects* graphics_objects_ptr;
 
 	Framework::TMXHandler::TMX tmx_data;
 };

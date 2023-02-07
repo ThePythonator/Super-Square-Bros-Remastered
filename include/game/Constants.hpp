@@ -22,7 +22,11 @@ namespace WINDOW {
 
 namespace STRINGS {
 	namespace LEVELS {
-		const std::string FOREGROUND = "Foreground"; // TODO: this may change later
+		namespace LAYERS {
+			// TODO: These may change later
+			const std::string FOREGROUND = "Foreground";
+			const std::string ENTITY_SPAWNS = "Entity Spawns";
+		}
 	}
 }
 
@@ -100,6 +104,7 @@ namespace FONTS {
 namespace COLOURS {
 	const Framework::Colour BLACK{ 0x00, 0x00, 0x00 };
 	const Framework::Colour WHITE{ 0xFF, 0xFF, 0xFF };
+	const Framework::Colour BLUE { 0x3E, 0x6A, 0xB2 };
 }
 
 //namespace TIMINGS {
