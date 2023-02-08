@@ -11,7 +11,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 # set(CMAKE_FIND_DEBUG_MODE TRUE)
 
 # Change your project name here
-set(PROJECT_NAME YourGame)
+set(PROJECT_NAME Super_Square_Bros_Remastered)
 
 # Add your sources here (adding headers is optional, but helps some CMake generators)
 set(GAME_SOURCES
