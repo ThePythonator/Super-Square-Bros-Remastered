@@ -1,11 +1,7 @@
 #pragma once
 
-#include <memory>
-
 #include "Maths.hpp"
 #include "Physics.hpp"
-
-#include "Animation.hpp"
 
 using Framework::vec2;
 using Framework::Rect;
@@ -15,10 +11,10 @@ using Framework::Rect;
 class Entity {
 public:
 	Entity();
-	Entity(Rect _rect, std::unique_ptr<AnimationInterface> _animation_ptr);
+	Entity(Rect _rect);
 
-	void update(float dt);
-	void render() const;
+	virtual void update(float dt) = 0;
+	virtual void render() const = 0;
 
 	bool colliding(const Entity& entity) const;
 
@@ -26,7 +22,4 @@ public:
 
 protected:
 	Rect rect;
-
-private:
-	std::unique_ptr<AnimationInterface> animation_ptr;
 };
