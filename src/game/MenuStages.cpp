@@ -21,7 +21,7 @@ bool TitleStage::update(float dt) {
 		}
 	}
 
-	finish(new LevelSelectStage());
+	finish(new LevelSelectStage()); // TODO: temporary to test LevelSelectStage!
 
 	if (transition->is_closed()) {
 		// Next stage!
