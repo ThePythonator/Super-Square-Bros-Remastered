@@ -28,6 +28,7 @@ set(GAME_SOURCES
 	"Animation.cpp"
 	
 	"Entity.cpp"
+	"PhysicsEntity.cpp"
 )
 
 # To be used instead of set(GAME_SOURCES ...)
