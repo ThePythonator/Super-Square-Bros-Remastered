@@ -7,8 +7,6 @@
 
 #include "Level.hpp"
 
-#include "Player.hpp" // TODO: Just for testing!
-
 class LevelSelectStage : public Framework::BaseStage {
 public:
 	void start();
@@ -18,9 +16,6 @@ public:
 
 private:
 	Level level;
-
-	// TODO: Remove! JUST FOR TESTING:
-	PlayerTest player;
 };
 
 class GameStage : public Framework::BaseStage {

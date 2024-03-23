@@ -31,6 +31,7 @@ namespace Framework {
 
 	namespace TMXHandler {
 		// Alternatively, we could use a struct which stored more of the layer data
+		// This could potentially be an array instead?
 		typedef std::vector<uint16_t> TMXLayer;
 
 		struct TMX {

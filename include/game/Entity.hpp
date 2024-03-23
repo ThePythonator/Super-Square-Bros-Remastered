@@ -20,6 +20,8 @@ public:
 
 	Rect get_rect() const;
 
+	void set_position(const vec2& position);
+
 protected:
 	Rect rect;
 };

@@ -5,6 +5,10 @@
 
 #include "Constants.hpp"
 
+#include "PhysicsHandler.hpp"
+
+#include "Player.hpp" // TODO: Just for testing!
+
 class Level {
 public:
 	Level();
@@ -19,4 +23,12 @@ private:
 	Framework::GraphicsObjects* graphics_objects_ptr;
 
 	Framework::TMXHandler::TMX tmx_data;
+
+	PhysicsHandler physics_handler;
+
+	std::vector<Entity> all_entities;
+	std::vector<PhysicsEntity*> all_physics_entities;
+
+	// TODO: Remove! JUST FOR TESTING:
+	PlayerTest player;
 };

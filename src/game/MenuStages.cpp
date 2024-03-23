@@ -21,9 +21,10 @@ bool TitleStage::update(float dt) {
 		}
 	}
 
-	finish(new LevelSelectStage()); // TODO: temporary to test LevelSelectStage!
-
 	if (transition->is_closed()) {
+		printf("Moving to new stage...\n");
+		finish(new LevelSelectStage()); // TODO: temporary to test LevelSelectStage!
+
 		// Next stage!
 		switch (button_selected) {
 		case BUTTONS::TITLE::PLAY:

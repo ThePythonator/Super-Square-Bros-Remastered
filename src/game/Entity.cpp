@@ -15,3 +15,7 @@ bool Entity::colliding(const Entity& entity) const {
 Rect Entity::get_rect() const {
 	return rect;
 }
+
+void Entity::set_position(const vec2& position) {
+	rect.position = position;
+}

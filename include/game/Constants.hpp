@@ -8,6 +8,8 @@
 
 #include "Maths.hpp"
 
+#include "BoundingBoxes.hpp"
+
 namespace WINDOW {
 	//const Framework::vec2 SIZE = Framework::vec2{ 960, 540 }; // Less square. Decide which resolution is better for gameplay. Could also make 50% larger.
 	const Framework::vec2 SIZE = Framework::vec2{ 1024, 768 }; // Maybe too square?
@@ -156,6 +158,43 @@ namespace BUTTONS {
 	}
 }
 
-//namespace GAME {
-//	
-//}
+namespace GAME {
+	namespace PHYSICS {
+		struct PhysicsEntityConstants {
+			float GRAVITY_ACCELERATION;
+			float TERMINAL_VELOCITY;
+			// etc
+		};
+
+		const PhysicsEntityConstants PLAYER_PHYSICS_ENTITY_CONSTANTS = {
+			600.0f, // GRAVITY_ACCELERATION
+			200.0f  // TERMINAL_VELOCITY
+			// etc
+		};
+
+		//namespace BOUNDING_BOX_TYPES {
+		//	const Framework::Rect EMPTY = Framework::Rect(0, 0, 0, 0);
+		//	const Framework::Rect LEFT_WALL = Framework::Rect(1, 0, 7, 8);
+		//	const Framework::Rect SOLID_TILE = Framework::Rect(0, 0, 8, 8);
+		//	const Framework::Rect RIGHT_WALL = Framework::Rect(0, 0, 7, 8);
+		//	const Framework::Rect SINGLE_WALL = Framework::Rect(1, 0, 6, 8);
+		//}
+
+		//// Bounding boxes for every tile or sprite
+		//const Framework::Rect BOUNDING_BOXES[SPRITES::INDEX::BLANK + 1] = {
+		//	// TODO: This is going to be such a pain
+		//	BOUNDING_BOX_TYPES::LEFT_WALL,
+		//	BOUNDING_BOX_TYPES::SOLID_TILE,
+		//	BOUNDING_BOX_TYPES::RIGHT_WALL,
+		//	BOUNDING_BOX_TYPES::SINGLE_WALL,
+		//	BOUNDING_BOX_TYPES::SOLID_TILE,
+		//	BOUNDING_BOX_TYPES::SOLID_TILE,
+		//	BOUNDING_BOX_TYPES::LEFT_WALL,
+		//	BOUNDING_BOX_TYPES::RIGHT_WALL,
+		//	BOUNDING_BOX_TYPES::SOLID_TILE,
+		//	BOUNDING_BOX_TYPES::SOLID_TILE,
+		//	BOUNDING_BOX_TYPES::SOLID_TILE,
+		//	BOUNDING_BOX_TYPES::SOLID_TILE // FIRST 12 DONE
+		//};
+	}
+}

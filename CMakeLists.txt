@@ -23,6 +23,8 @@ set(GAME_SOURCES
 
 	"Physics.cpp"
 
+	"PhysicsHandler.cpp"
+
 	"Level.cpp"
 
 	"Animation.cpp"

@@ -18,10 +18,19 @@ Level::Level(Framework::GraphicsObjects* _graphics_objects_ptr, std::string file
 	// Considering how to store tiles:
 	// Using an array gives much more efficient lookup (so faster collision detection etc), but could take up to ~250MB
 	// Using individual structs for each tile might be ~35MB, but requires ~4k comparisons to check for collisions
+
+
+	physics_handler = PhysicsHandler(&tmx_data);
+
+	// TODO: Remove, just for testing!
+	player = PlayerTest(graphics_objects_ptr->spritesheet_ptrs[GRAPHICS_OBJECTS::SPRITESHEETS::MAIN_SPRITESHEET]);
 }
 
 void Level::update(float dt) {
+	// TODO: Remove, just for testing!
+	//player.update(dt);
 
+	physics_handler.update(all_physics_entities, dt);
 }
 
 void Level::render() {
@@ -30,6 +39,9 @@ void Level::render() {
 	graphics_objects_ptr->graphics_ptr->fill(COLOURS::BLUE);
 
 	render_layer(STRINGS::LEVELS::LAYERS::FOREGROUND);
+
+	// TODO: Remove, just for testing!
+	player.render();
 }
 
 void Level::render_layer(std::string layer_name) {
