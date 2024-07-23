@@ -10,8 +10,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 # Uncomment if you need to do some debugging :)
 # set(CMAKE_FIND_DEBUG_MODE TRUE)
 
+# Uncomment if no console should be created
+# set(WINDOWS_NO_CONSOLE)
+
 # Change your project name here
 set(PROJECT_NAME Super_Square_Bros_Remastered)
+
+project(${PROJECT_NAME})
 
 # Add your sources here (adding headers is optional, but helps some CMake generators)
 set(GAME_SOURCES
@@ -34,18 +39,6 @@ set(GAME_SOURCES
 
 	"Player.cpp"
 )
-
-# To be used instead of set(GAME_SOURCES ...)
-# set(USE_GLOB)
-
-# Uncomment if no console should be created
-# set(WINDOWS_NO_CONSOLE)
-
-# Uncomment if using Assets.yml and the 32blit asset manager
-# set(USE_ASSETS_YML)
-
-
-project(${PROJECT_NAME})
 
 set(FRAMEWORK_SOURCES
 	"BaseGame.cpp"
@@ -87,23 +80,11 @@ set(FRAMEWORK_SOURCES
 list(TRANSFORM GAME_SOURCES PREPEND src/game/)
 list(TRANSFORM FRAMEWORK_SOURCES PREPEND src/framework/)
 
-if (USE_GLOB)
-	# Alternatively, let glob find all the .cpp files in the src directory and subdirectories... (CMake won't detect when new files are added)
-	file(GLOB GAME_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/game/*.cpp")
-	# file(GLOB FRAMEWORK_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/framework/*.cpp")
-endif()
-
 set(PROJECT_SOURCES ${FRAMEWORK_SOURCES};${GAME_SOURCES})
-if(USE_ASSETS_YML)
-	list(APPEND PROJECT_SOURCES "Assets.cpp")
-endif()
 
-# ... and any other files you want in the release here
+# Add any other files you want in the release here
 set(PROJECT_DISTRIBS LICENSE README.md)
 set(PROJECT_ASSETS assets)
-
-set(ASSET_OUTPUTS "Assets.hpp" "Assets.cpp")
-set(ASSET_DEPENDS "Assets.yml")
 
 if(APPLE)
     # Need to put the asssets inside the bundle (this is where SDL_GetBasePath points to)
@@ -118,17 +99,6 @@ if (WINDOWS_NO_CONSOLE)
 endif()
 
 add_executable(${PROJECT_NAME} ${CONSOLE_FLAG} MACOSX_BUNDLE ${PROJECT_SOURCES})
-
-find_package(PythonInterp 3.6 REQUIRED)
-
-if(USE_ASSETS_YML)
-# Build Assets.hpp/cpp files
-add_custom_command(
-    OUTPUT ${ASSET_OUTPUTS}
-    COMMAND ${PYTHON_EXECUTABLE} -m ttblit pack --config ${CMAKE_CURRENT_SOURCE_DIR}/${ASSET_DEPENDS} --output ${CMAKE_CURRENT_BINARY_DIR} --force
-    DEPENDS ${ASSET_DEPENDS}
-)
-endif()
 
 include(fetch/get_json.cmake)
 include(fetch/get_sdl2.cmake)
