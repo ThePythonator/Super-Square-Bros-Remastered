@@ -11,7 +11,7 @@ if(EMSCRIPTEN)
     add_library(SDL2::SDL2main INTERFACE IMPORTED)
 
     add_library(SDL2::image INTERFACE IMPORTED)
-    set_target_properties(SDL2::image PROPERTIES
+    set_target_properties(SDL2_image::SDL2_image PROPERTIES
         INTERFACE_COMPILE_OPTIONS "SHELL:-s USE_SDL_IMAGE=2"
         INTERFACE_LINK_LIBRARIES "-s USE_SDL_IMAGE=2"
     )
@@ -30,7 +30,7 @@ if(NOT TARGET SDL2::SDL2)
 
     FetchContent_Populate(SDL2
         GIT_REPOSITORY https://github.com/libsdl-org/SDL
-        GIT_TAG        release-2.0.16
+        GIT_TAG        release-2.30.5
     )
     add_subdirectory(${sdl2_SOURCE_DIR} SDL2 EXCLUDE_FROM_ALL)
 endif()
@@ -52,8 +52,8 @@ if(NOT TARGET SDL2::mixer)
     set(SUPPORT_OGG ON CACHE BOOL "")
 
     FetchContent_Populate(SDL2_mixer
-        GIT_REPOSITORY https://github.com/Daft-Freak/SDL_mixer
-        GIT_TAG        patch-1
+        GIT_REPOSITORY https://github.com/libsdl-org/SDL_mixer
+        GIT_TAG        release-2.8.0
     )
     #add_definitions(-DMUSIC_MP3 -DMUSIC_OGG) # VS compile errors if no music formats?? //-DMUSIC_WAV
     add_subdirectory(${sdl2_mixer_SOURCE_DIR} SDL2_mixer EXCLUDE_FROM_ALL)
