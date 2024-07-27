@@ -42,21 +42,17 @@ if(NOT TARGET SDL2::image)
         GIT_TAG        release-2.8.2
     )
     add_subdirectory(${sdl2_image_SOURCE_DIR} SDL2_image EXCLUDE_FROM_ALL)
-    #set_property(TARGET jpeg PROPERTY POSITION_INDEPENDENT_CODE ON) # build fix
 endif()
 
 if(NOT TARGET SDL2::mixer)
-    # Not sure what I'm doing here
-    set(SUPPORT_MP3_MPG123 ON)
-    #set(SUPPORT_OGG ON)
-    set(SUPPORT_OGG ON CACHE BOOL "")
+    set(SDL2MIXER_OPUS OFF CACHE BOOL "" FORCE)
+    set(SDL2MIXER_MOD OFF CACHE BOOL "" FORCE)
+    set(SDL2MIXER_MIDI OFF CACHE BOOL "" FORCE)
+    set(SDL2MIXER_WAVPACK OFF CACHE BOOL "" FORCE)
 
     FetchContent_Populate(SDL2_mixer
         GIT_REPOSITORY https://github.com/libsdl-org/SDL_mixer
         GIT_TAG        release-2.8.0
     )
-    #add_definitions(-DMUSIC_MP3 -DMUSIC_OGG) # VS compile errors if no music formats?? //-DMUSIC_WAV
     add_subdirectory(${sdl2_mixer_SOURCE_DIR} SDL2_mixer EXCLUDE_FROM_ALL)
-    #set_property(TARGET vorbisidec PROPERTY POSITION_INDEPENDENT_CODE ON) # build fix
-    # ogg too?
 endif()
