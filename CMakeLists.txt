@@ -110,7 +110,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include/external)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 # Link
-target_link_libraries(${PROJECT_NAME} SDL2::SDL2main SDL2::SDL2 SDL2::image SDL2::mixer nlohmann_json::nlohmann_json)
+target_link_libraries(${PROJECT_NAME} SDL2::SDL2main SDL2::SDL2 SDL2_image::SDL2_image SDL2_mixer::SDL2_mixer nlohmann_json::nlohmann_json)
 
 
 # Setup release packages

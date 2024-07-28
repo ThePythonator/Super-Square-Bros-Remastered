@@ -28,7 +28,7 @@ jobs:
             name: Linux
             release-suffix: LIN64
             cmake-args: #-DSDL2_IMAGE_DIR=$GITHUB_WORKSPACE/main/SDL2
-            apt-packages: libsdl2-dev libsdl2-image-dev python3-setuptools
+            apt-packages: #libxmp-dev
             can-fail: false
 
           - os: ubuntu-20.04
@@ -43,7 +43,7 @@ jobs:
             name: macOS
             release-suffix: MACOS
             cmake-args: #-DSDL2_IMAGE_DIR=$GITHUB_WORKSPACE/main/SDL2
-            brew-packages: sdl2 sdl2_image
+            brew-packages: #libxmp
             can-fail: true
 
           - os: windows-latest
@@ -71,21 +71,19 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt update && sudo apt install ${{matrix.apt-packages}}
-        pip3 install 32blit
 
     # MacOS dependencies
-    - name: Install macOS deps
-      if: runner.os == 'macOS'
-      run: |
-        brew install ${{matrix.brew-packages}}
-        python3 -m pip install 32blit
+    #- name: Install macOS deps
+    #  if: runner.os == 'macOS'
+    #  run: |
+    #    brew install ${{matrix.brew-packages}}
 
     # Windows dependencies
-    - name: Install Windows deps
-      if: runner.os == 'Windows'
-      shell: bash
-      run: |
-        python -m pip install 32blit
+    #- name: Install Windows deps
+    #  if: runner.os == 'Windows'
+    #  shell: bash
+    #  run: |
+    #    python -m pip install 32blit
 
     # Emscripten SDK setup
     - name: Setup Emscripten cache
