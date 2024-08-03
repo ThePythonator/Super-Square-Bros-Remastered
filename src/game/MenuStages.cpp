@@ -1,5 +1,51 @@
 #include "MenuStages.hpp"
 
+// IntroStage
+
+void IntroStage::start() {
+	intro_timer.stop();
+
+	// Start transition
+	set_transition(graphics_objects->transition_ptrs[GRAPHICS_OBJECTS::TRANSITIONS::FADE_TRANSITION]);
+	transition->open();
+}
+
+bool IntroStage::update(float dt) {
+	transition->update(dt);
+	intro_timer.update(dt);
+
+	if (transition->is_open()) {
+		if (intro_timer.running()) {
+			if (intro_timer.time() >= TIMINGS::INTRO_OPEN_TIME) {
+				transition->close();
+			}
+		}
+		else {
+			intro_timer.reset();
+			intro_timer.start();
+		}
+	}
+	else if (transition->is_closed()) {
+		// Finish intro
+		finish(new TitleStage());
+	}
+
+	return true;
+}
+
+void IntroStage::render() {
+	graphics_objects->graphics_ptr->fill(COLOURS::BLACK);
+
+	// Display the Scorpion Games logo in the centre of the display at LOGO_SCALE
+	graphics_objects->spritesheet_ptrs[GRAPHICS_OBJECTS::SPRITESHEETS::MAIN_SPRITESHEET]->rect(
+		Framework::Rect(0, 8, 4, 4) * SPRITES::SIZE,
+		WINDOW::SIZE_HALF / SPRITES::LOGO_SCALE - Framework::VEC_ONES * SPRITES::SIZE_HALF * 4,
+		SPRITES::LOGO_SCALE
+	);
+
+	transition->render();
+}
+
 // TitleStage
 
 void TitleStage::start() {
@@ -49,7 +95,7 @@ bool TitleStage::update(float dt) {
 }
 
 void TitleStage::render() {
-	graphics_objects->graphics_ptr->fill(COLOURS::WHITE);
+	graphics_objects->graphics_ptr->fill(COLOURS::BLUE);
 
 	graphics_objects->spritesheet_ptrs[GRAPHICS_OBJECTS::SPRITESHEETS::MAIN_SPRITESHEET]->sprite(0, Framework::Vec(64, 48));
 

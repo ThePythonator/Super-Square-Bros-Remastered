@@ -43,6 +43,9 @@ namespace Framework {
 		vec2 size;
 	};
 
+	Rect operator*(const Rect& r, const float s);
+	Rect operator*(const float s, const Rect& r);
+
 	extern const Rect RECT_NULL;
 
 	bool colliding(Rect a, vec2 b);

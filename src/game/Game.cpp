@@ -5,7 +5,7 @@ Game::Game() : BaseGame() {
 }
 
 void Game::start() {
-	stage = new TitleStage();
+	stage = new IntroStage();
 }
 
 void Game::end() {

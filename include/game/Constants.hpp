@@ -110,9 +110,9 @@ namespace COLOURS {
 	const Framework::Colour BLUE { 0x3E, 0x6A, 0xB2 };
 }
 
-//namespace TIMINGS {
-//
-//}
+namespace TIMINGS {
+	const float INTRO_OPEN_TIME = 4.0f;
+}
 
 namespace TRANSITIONS {
 	const float FADE_TIME = 1.0f;
@@ -123,6 +123,7 @@ namespace SPRITES {
 	const uint8_t SIZE_HALF = SIZE / 2;
 	const uint8_t SCALE = 4;
 	const uint8_t UI_SCALE = 4;
+	const uint8_t LOGO_SCALE = 8;
 
 	namespace INDEX {
 		const uint16_t BLANK = 0x3ff;

@@ -47,6 +47,14 @@ namespace Framework {
 		return position + size;
 	}
 
+	Rect operator*(const Rect& r, const float s) {
+		return Rect(r.position * s, r.size * s);
+	}
+
+	Rect operator*(const float s, const Rect& r) {
+		return Rect(r.position * s, r.size * s);
+	}
+
 	bool colliding(Rect a, vec2 b) {
 		return b.x >= a.position.x && b.x <= a.position.x + a.size.x &&
 			   b.y >= a.position.y && b.y <= a.position.y + a.size.y;
