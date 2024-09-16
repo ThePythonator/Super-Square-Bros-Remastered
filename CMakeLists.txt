@@ -13,10 +13,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 # Uncomment if no console should be created
 # set(WINDOWS_NO_CONSOLE)
 
-# Change your project name here
-set(PROJECT_NAME Super_Square_Bros_Remastered)
-
-project(${PROJECT_NAME})
+project(Super_Square_Bros_Remastered)
 
 # Add your sources here (adding headers is optional, but helps some CMake generators)
 set(GAME_SOURCES
